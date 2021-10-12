@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+    cache:
+        container_name: cache
+        restart: unless-stopped
+        env_file: .env
+        volumes:
+          - './cache/data:/data/cache'
+          - './cache/logs:/data/logs'
+        ports:
+          - ${EXTERNAL_IP}:80:80
+          - ${EXTERNAL_IP}:443:443
+        image: lancachenet/monolithic
+    dns:
+        container_name: cache-dns
+        restart: unless-stopped
+        env_file: .env
+        environment:
+            USE_GENERIC_CACHE: true
+            LANCACHE_IP: ${EXTERNAL_IP}
+        ports:
+          - ${EXTERNAL_IP}:53:53/udp
+        links:
+          - cache
+        image: lancachenet/lancache-dns
