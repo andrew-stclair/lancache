@@ -3,7 +3,7 @@ services:
     cache:
         container_name: cache
         restart: unless-stopped
-        env_file: .env
+        env_file: cache.env
         volumes:
           - './cache/data:/data/cache'
           - './cache/logs:/data/logs'
@@ -14,7 +14,7 @@ services:
     dns:
         container_name: cache-dns
         restart: unless-stopped
-        env_file: .env
+        env_file: cache.env
         environment:
             USE_GENERIC_CACHE: true
             LANCACHE_IP: ${EXTERNAL_IP}

@@ -2,7 +2,7 @@
 My docker-compose script for a lan cache using lancache.net's monolithic cache and dns containers
 
 # Running
-Edit the .env file and set your disk space and memory usage limits, as well as the maximum time to keep files.
+Edit the `cache.env` file and set your disk space and memory usage limits, as well as the maximum time to keep files.
 
 run either `run.sh` for linux (and maybe macos, have not tested this) or `run.cmd` for windows.
 
